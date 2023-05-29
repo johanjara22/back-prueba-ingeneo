@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.pruebatecnicaingeneo.services.LogisticaTerrestreService;
 
 @RestController
 @RequestMapping("api/logisticaTerr")
+@CrossOrigin(origins = {"http://localhost:4200","https://localhost:4200"})
 public class LogisticaTerrestreRestController {
 	@Autowired 
 	private LogisticaTerrestreService logisticaTerrestreService;
@@ -28,13 +30,13 @@ public class LogisticaTerrestreRestController {
 	}
 	
 	@GetMapping("getLogisticaTerrestre/{IdLogistica}")
-	public ResponseEntity<LogisticaTerrestre> getLogisticasMaritimaById(@PathVariable Long IdLogistica ) {
+	public ResponseEntity<LogisticaTerrestre> getLogisticasTerrestresById(@PathVariable Long IdLogistica ) {
 		return new ResponseEntity<LogisticaTerrestre>(logisticaTerrestreService.getLogisticaTerrestreById(IdLogistica),HttpStatus.ACCEPTED);
 	}
 	
 	
 	@PostMapping("save")
-	public ResponseEntity<LogisticaTerrestre> saveLogisticaMaritima(@RequestBody LogisticaTerrestre logisticaTerrestre){
+	public ResponseEntity<LogisticaTerrestre> saveLogisticaTerrestre(@RequestBody LogisticaTerrestre logisticaTerrestre){
 		return new ResponseEntity<LogisticaTerrestre>(logisticaTerrestreService.saveLogisticaTerrestre(logisticaTerrestre),HttpStatus.ACCEPTED);
 	}
 	

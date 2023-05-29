@@ -21,11 +21,7 @@ public class TipoProducto {
 	
 	private String nombreProducto;
 	
-	 @ManyToOne(fetch = FetchType.LAZY, optional = false)
-	  @JoinColumn(name = "logistica_terrestre", nullable = false)
-	  @OnDelete(action = OnDeleteAction.CASCADE)
-	  @JsonIgnore
-	  private LogisticaTerrestre logisticaTerrestre;
+
 
 	public Integer getIdTipoProducto() {
 		return idTipoProducto;

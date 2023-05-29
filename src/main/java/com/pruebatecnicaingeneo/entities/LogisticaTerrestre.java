@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.springframework.data.annotation.CreatedDate;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,45 +19,48 @@ import jakarta.persistence.TemporalType;
 @Entity
 public class LogisticaTerrestre {
 
-	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_logistica_terrestre")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_logistica_terrestre")
 	private Long idLogisticaTerrestre;
-	
+
 	private Integer cantidadProducto;
-	
-	@Column(nullable = false, updatable = false,name="fecha_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date fechaRegistro;
-	
-	
-	@Column(nullable = false, updatable = false,name="fecha_entrega")
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date fechaEntrega;
-	
+
+	@Column(nullable = false, updatable = false, name = "fecha_registro")
+	@Temporal(TemporalType.TIMESTAMP)
+	@CreatedDate
+	private Date fechaRegistro;
+
+	@Column(nullable = false, updatable = false, name = "fecha_entrega")
+	@Temporal(TemporalType.TIMESTAMP)
+	@CreatedDate
+	private Date fechaEntrega;
+
 	@OneToOne()
 	@JoinColumn(name = "bodega", updatable = false, nullable = false)
 	private Bodega bodega;
-	
-	@Column(name="precio_envio")
+
+	@Column(name = "precio_envio")
 	private BigDecimal precioEnvio;
-	
+
 	@OneToOne()
 	@JoinColumn(name = "vehiculo", updatable = false, nullable = false)
 	private Vehiculo vehiculo;
 
-	@OneToOne()
-	@JoinColumn(name = "guia", updatable = false, nullable = false)
-	private Guia guia;
-	
+	private String numeroGuia;
+
 	@OneToOne()
 	@JoinColumn(name = "cliente", updatable = false, nullable = false)
 	private Cliente cliente;
+
 	
-	
+	public String getNumeroGuia() {
+		return numeroGuia;
+	}
+
+	public void setNumeroGuia(String numeroGuia) {
+		this.numeroGuia = numeroGuia;
+	}
 
 	public Cliente getCliente() {
 		return cliente;
@@ -122,14 +126,5 @@ public class LogisticaTerrestre {
 		this.vehiculo = vehiculo;
 	}
 
-	public Guia getGuia() {
-		return guia;
-	}
 
-	public void setGuia(Guia guia) {
-		this.guia = guia;
-	}
-	
-	
-	
 }

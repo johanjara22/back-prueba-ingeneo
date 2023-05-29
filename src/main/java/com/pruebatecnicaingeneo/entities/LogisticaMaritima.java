@@ -47,9 +47,7 @@ public class LogisticaMaritima {
 	@JoinColumn(name = "puerto", updatable = false, nullable = false)
 	private Puerto puerto;
 
-	@OneToOne()
-	@JoinColumn(name = "guia", updatable = false, nullable = false)
-	private Guia guia;
+	private String numeroGuia;
 	
 	@OneToOne()
 	@JoinColumn(name = "cliente", updatable = false, nullable = false)
@@ -120,13 +118,15 @@ public class LogisticaMaritima {
 		this.puerto = puerto;
 	}
 
-	public Guia getGuia() {
-		return guia;
+	public String getNumeroGuia() {
+		return numeroGuia;
 	}
 
-	public void setGuia(Guia guia) {
-		this.guia = guia;
+	public void setNumeroGuia(String numeroGuia) {
+		this.numeroGuia = numeroGuia;
 	}
+
+
 
 	
 }

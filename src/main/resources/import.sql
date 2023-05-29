@@ -24,3 +24,9 @@ insert into tipo_identificacion values (0001,"PASAPORTE");
 insert into tipo_identificacion values (0002,"CEDULA DE CIUDADANIA");
 insert into tipo_identificacion values (0003,"CEDULA DE EXTRANGERIA");
 
+insert into tipo_producto values (0001,"ALIMENTOS");
+insert into tipo_producto values (0002,"FARMACOS");
+insert into tipo_producto values (0003,"ROPA");
+insert into tipo_producto values (0004,"ELECTRODOMESTICOS");
+
+INSERT INTO `cliente` (`identificacion`, `apellido`, `email`, `nombre`, `tipo_identificacion`) VALUES ('1012421355', 'Jara', 'johan@gmail.com', 'Andres', '0001');
